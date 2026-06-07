@@ -7,7 +7,7 @@ if (!isset($_SESSION['StatusUser']) ||
     exit;
 }
 
-require('../koneksi.php');
+require(__DIR__ . '/../koneksi.php');
 
 if (!isset($_GET['id_pelanggan'])) {
     echo "ID pelanggan tidak ditemukan!";
@@ -39,13 +39,13 @@ if (!$row) {
   <title>Edit Pelanggan</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="http://localhost/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <script src="http://localhost/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <link href="../latihanaja/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="../latihanaja/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
 
-<?php require('../navigasi.php'); ?>
+<?php require(__DIR__ . '/../navigasi.php'); ?>
 
 <div class="container" style="margin-top:80px">
   <div class="card">
@@ -54,7 +54,7 @@ if (!$row) {
     </div>
 
     <div class="card-body">
-      <form method="post" action="../pelanggan/edit2_pelanggan.php">
+      <form method="post" action="edit2_pelanggan.php">
 
         <div class="mb-3">
           <label for="id_pelanggan" class="form-label">ID Pelanggan</label>
@@ -98,7 +98,7 @@ if (!$row) {
 
         <button type="submit" class="btn btn-success btn-sm">Simpan Perubahan</button>
         <button type="reset" class="btn btn-secondary btn-sm">Reset</button>
-        <a href="../pelanggan/pelanggan.php" class="btn btn-danger btn-sm">Batal</a>
+        <a href="pelanggan.php" class="btn btn-danger btn-sm">Batal</a>
 
       </form>
     </div>

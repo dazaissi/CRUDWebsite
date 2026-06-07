@@ -1,10 +1,10 @@
 <?php
 session_start();
-require('koneksi.php');
+require(__DIR__ . '/koneksi.php');
 
 // Pastikan form dikirim dengan method POST
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    header("Location: login.php");
+    header("Location: /latihanaja/login.php");
     exit;
 }
 
@@ -30,42 +30,42 @@ if ($data) {
     // Jika password benar
     if ($data['password'] == $password) {
 
-        // Kasir
+        // admin
         if ($data['id_admin'] == '1') {
             $_SESSION['StatusUser'] = 'valid1';
             $_SESSION['id_admin'] = $data['id_admin'];
             $_SESSION['username'] = $data['username'];
 
-            header("Location: index.php");
+            header("Location: /latihanaja/index.php");
             exit;
         }
 
-        // Admin
+        // kasir
         else if ($data['id_admin'] == '2') {
             $_SESSION['StatusUser'] = 'valid2';
             $_SESSION['id_admin'] = $data['id_admin'];
             $_SESSION['username'] = $data['username'];
 
-            header("Location: index.php");
+            header("Location: /latihanaja/index.php");
             exit;
         }
 
         // Kalau id_admin bukan 1 atau 2
         else {
             $_SESSION['StatusUser'] = 'invalid';
-            header("Location: login.php?pesan=id_admin_salah");
+            header("Location: /latihanaja/login.php?pesan=id_admin_salah");
             exit;
         }
 
     } else {
         $_SESSION['StatusUser'] = 'invalid';
-        header("Location: login.php?pesan=password_salah");
+        header("Location: /latihanaja/login.php?pesan=password_salah");
         exit;
     }
 
 } else {
     $_SESSION['StatusUser'] = 'invalid';
-    header("Location: login.php?pesan=user_tidak_ditemukan");
+    header("Location: /latihanaja/login.php?pesan=user_tidak_ditemukan");
     exit;
 }
 ?>

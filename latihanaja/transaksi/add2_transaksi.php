@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Admin dan kasir boleh tambah pelanggan
+// Admin dan kasir boleh tambah transaksi
 if (!isset($_SESSION['StatusUser']) || 
    ($_SESSION['StatusUser'] != 'valid1' && $_SESSION['StatusUser'] != 'valid2')) {
     echo "Anda tidak berhak mengakses halaman ini!";
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 
 // Buka koneksi database
-require('../koneksi.php');
+require(__DIR__ . '/../koneksi.php');
 
 // Mengambil data dari form
 $id_transaksi = $_POST['id_transaksi'];
@@ -27,7 +27,8 @@ $total_harga = $_POST['total_harga'];
 $status = $_POST['status'];
 
 // Validasi sederhana
-if ($id_transaksi == "" || $id_pelanggan == "" || $id_layanan == "" || $tanggal_transaksi == "" || $berat == "" || $total_harga == "" || $status == "") {
+if ($id_transaksi == "" || $id_pelanggan == "" || $id_layanan == "" || 
+    $tanggal_transaksi == "" || $berat == "" || $total_harga == "" || $status == "") {
     echo "Semua data wajib diisi!";
     exit;
 }
@@ -38,6 +39,7 @@ $sql = "INSERT INTO transaksi
         VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = mysqli_prepare($koneksi, $sql);
+
 mysqli_stmt_bind_param(
     $stmt,
     "iiisdis",
@@ -51,7 +53,7 @@ mysqli_stmt_bind_param(
 );
 
 if (mysqli_stmt_execute($stmt)) {
-    header("Location: ../transaksi/transaksi.php?pesan=tambah_sukses");
+    header("Location: transaksi.php?pesan=tambah_sukses");
     exit;
 } else {
     echo "Data gagal ditambahkan: " . mysqli_error($koneksi);

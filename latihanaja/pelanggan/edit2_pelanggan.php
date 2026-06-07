@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 
 // Buka koneksi database
-require('../koneksi.php');
+require(__DIR__ . '/../koneksi.php');
 
 // Mengambil data dari form
 $id_pelanggan = $_POST['id_pelanggan'];
@@ -49,7 +49,7 @@ mysqli_stmt_bind_param(
 
 // Jalankan query
 if (mysqli_stmt_execute($stmt)) {
-    header("Location: ../pelanggan/pelanggan.php?pesan=edit_sukses");
+    header("Location: pelanggan.php?pesan=edit_sukses");
     exit;
 } else {
     echo "Data gagal diubah: " . mysqli_error($koneksi);

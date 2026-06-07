@@ -4,8 +4,8 @@
   <title>Rekap Pembayaran Per Pelanggan</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="http://localhost/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <script src="http://localhost/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <link href="/latihanaja/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/latihanaja/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -18,8 +18,8 @@
       exit;
   }
 
-  require('Navigasi.php');
-  require('Koneksi.php');
+  require(__DIR__ . '/../navigasi.php');
+  require(__DIR__ . '/../koneksi.php');
 ?>
 
 <div class="container" style="margin-top:80px">

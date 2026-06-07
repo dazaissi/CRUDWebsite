@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     exit;
 }
 
-require('../koneksi.php');
+require(__DIR__ . '/../koneksi.php');
 
 $id_transaksi = $_POST['id_transaksi'];
 $id_pelanggan = $_POST['id_pelanggan'];
@@ -52,7 +52,7 @@ mysqli_stmt_bind_param(
 );
 
 if (mysqli_stmt_execute($stmt)) {
-    header("Location: ../transaksi/transaksi.php?pesan=edit_sukses");
+    header("Location: transaksi.php?pesan=edit_sukses");
     exit;
 } else {
     echo "Data gagal diubah: " . mysqli_error($koneksi);

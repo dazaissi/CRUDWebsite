@@ -4,8 +4,8 @@
   <title>Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="http://localhost/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <script src="http://localhost/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <link href="../latihanaja/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="../latihanaja/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="card-body">
-          <form method="POST" action="validasiUser.php">
+          <form method="POST" action="../latihanaja/validasiUser.php">
 
             <div class="mb-3">
               <label>Id User</label>

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 
 // Buka koneksi database
-require('../koneksi.php');
+require(__DIR__ . '/../koneksi.php');
 
 // Mengambil data dari form
 $id_pelanggan = $_POST['id_pelanggan'];
@@ -38,7 +38,7 @@ $stmt = mysqli_prepare($koneksi, $sql);
 mysqli_stmt_bind_param($stmt, "ssss", $id_pelanggan, $nama_pelanggan, $alamat, $no_hp);
 
 if (mysqli_stmt_execute($stmt)) {
-    header("Location: ../pelanggan/pelanggan.php?pesan=tambah_sukses");
+    header("Location: pelanggan.php?pesan=tambah_sukses");
     exit;
 } else {
     echo "Data gagal ditambahkan: " . mysqli_error($koneksi);

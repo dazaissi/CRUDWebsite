@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 
 // Buka koneksi database
-require('../koneksi.php');
+require(__DIR__ . '/../koneksi.php');
 
 // Mengambil data dari form
 $id_layanan = $_POST['id_layanan'];
@@ -37,7 +37,7 @@ $stmt = mysqli_prepare($koneksi, $sql);
 mysqli_stmt_bind_param($stmt, "ssd", $id_layanan, $nama_layanan, $harga_kg);
 
 if (mysqli_stmt_execute($stmt)) {
-    header("Location: ../layanan/layanan.php?pesan=tambah_sukses");
+    header("Location: layanan.php?pesan=tambah_sukses");
     exit;
 } else {
     echo "Data gagal ditambahkan: " . mysqli_error($koneksi);
